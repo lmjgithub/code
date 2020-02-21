@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PVue</title>
+  </head>
+  <body>
+    <div id="root">
+      <div>{{song}}</div>
+      <div><input type="text" v-model="song" /></div>
+      <div>{{a.b}}</div>
+      <input type="text" id="input" />
+    </div>
+  </body>
+
+  <script src="./p-vue.js"></script>
+  <!-- <script src="./compile.js"></script> -->
+  <script>
+    const pVue = new PVue({
+      el: "#root",
+      data: { song: "lalala", a: { b: "1" } }
+    });
+    setTimeout(() => {
+      pVue._data.a.b = "x";
+    }, 2000);
+  </script>
+
+  <!--  <script>
+    function dataBind(el, data) {
+      let val = data;
+      Object.defineProperty({}, "key", {
+        get() {
+          return val;
+        },
+        set(newVal) {
+          if (val === newVal) {
+            return;
+          }
+          val = newVal;
+        }
+      });
+      let $el = document.querySelector(el);
+      
+      $el.addEventListener("input", function(e) {
+        const newVal = e.target.value;
+        val = newVal;
+      });
+    }
+    const a = "111";
+    setTimeout(() => {
+        
+    }, timeout);
+    dataBind("#input", a);
+  </script> -->
+</html>

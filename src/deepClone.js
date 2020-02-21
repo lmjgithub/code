@@ -7,7 +7,7 @@ const deepClone = (target, cache = new WeakMap()) => {
   }
   const copy = Array.isArray(target) ? [] : {};
   cache.set(target, copy);
-  Object.keys(target).forEach(key => (copy[key] = deepClone(obj[key], cache)));
+  Object.keys(target).forEach(key => (copy[key] = deepClone(target[key], cache)));
   return copy;
 };
 

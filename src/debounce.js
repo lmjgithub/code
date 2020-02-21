@@ -10,13 +10,9 @@ function debounce(fn, wait = 50, leading = true) {
     timer && clearTimeout(timer);
     if (leading) {
       if (!timer) result = fn.apply(this, args);
-      timer = setTimeout(() => {
-        timer = null;
-      }, wait);
+      timer = setTimeout(() => (timer = null), wait);
     } else {
-      timer = setTimeout(() => {
-        result = fn.apply(this, args);
-      }, wait);
+      timer = setTimeout(() => (result = fn.apply(this, args)), wait);
     }
     return result;
   };
